@@ -8,7 +8,9 @@ MODULE_LICENSE("GPL");
 
 irqreturn_t hook_handler(int irq, void *dev_id)
 {
-  printk("kbd_hook: intr!\n");
+  char data;
+  data = inb(0x60);
+  printk("kbd_hook: intr! data %x\n", data);
   return IRQ_HANDLED;
 }
 
